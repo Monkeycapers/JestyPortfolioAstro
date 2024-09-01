@@ -4,6 +4,7 @@
   --nav-background-color: #212121;
   --nav-text-color: #ffffff;
   --accent-color: #ff7ccb;
+  --sidebar-accent-color: #000000;
 }
 
 [data-theme="dark"] {
@@ -12,4 +13,5 @@
   --nav-background-color: #000000;
   --nav-text-color: #ffffff;
   --accent-color: #ff7ccb;
+  --sidebar-accent-color: #ff7ccb;
 }
