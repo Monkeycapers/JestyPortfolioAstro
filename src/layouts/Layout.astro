@@ -1,50 +1,105 @@
 ---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import "../theme/theme.module.css";
+
+// Supports weights 300-800
+import "@fontsource-variable/open-sans";
+
 interface Props {
-	title: string;
+  title: string;
+  sidebarEnabled?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, sidebarEnabled = true } = Astro.props;
+
+const mainClass = sidebarEnabled ? "main" : "main full";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Portfolio written using Astro" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <div>
+      <Header />
+    </div>
+    <div class="content">
+      <!-- Main Content -->
+      <div class={mainClass}>
+        <slot />
+      </div>
+
+      <!-- Side Bar -->
+      {
+        sidebarEnabled && (
+          <div class="side">
+            <Sidebar />
+          </div>
+        )
+      }
+    </div>
+  </body>
 </html>
+<style>
+  .content {
+    width: 100%;
+    a:visited {
+      color: var(--text-color);
+    }
+    a:link {
+      color: var(--text-color);
+    }
+  }
+
+  .main {
+    float: left;
+    width: 55%;
+    margin-left: 15%;
+    margin-right: 2.8%;
+  }
+
+  .full {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .side {
+    float: left;
+    width: 35%;
+    max-width: 250px;
+    padding-left: 5px;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 950px) {
+    .main {
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+
+    .side {
+      float: left;
+      width: 90%;
+      max-width: unset;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }
+</style>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  body {
+    margin: 0;
+    font-family: "Open Sans Variable", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
 </style>

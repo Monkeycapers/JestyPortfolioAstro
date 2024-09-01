@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "jesty-portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,11 +7,21 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write .",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "astro": "^4.15.1",
     "@astrojs/check": "^0.9.3",
+    "@fontsource-variable/open-sans": "^5.0.30",
+    "astro": "^4.15.1",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint": "^9.9.1",
+    "eslint-plugin-astro": "^1.2.3",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

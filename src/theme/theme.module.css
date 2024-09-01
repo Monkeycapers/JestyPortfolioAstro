@@ -1,0 +1,15 @@
+[data-theme="light"] {
+  --text-color: #000000;
+  --background-color: #f5f5f5;
+  --nav-background-color: #212121;
+  --nav-text-color: #ffffff;
+  --accent-color: #ff7ccb;
+}
+
+[data-theme="dark"] {
+  --text-color: #ffffff;
+  --background-color: #212121;
+  --nav-background-color: #000000;
+  --nav-text-color: #ffffff;
+  --accent-color: #ff7ccb;
+}
